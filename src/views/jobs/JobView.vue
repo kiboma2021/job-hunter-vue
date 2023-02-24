@@ -11,15 +11,15 @@
 export default {
   data() {
     return {
-      jobs: [
-        {title: "Web Developer", description: "Develop websites and maintain existing applications", id: 1},
-        {title: "App Developer", description: "Develop websites and maintain existing applications", id: 2},
-        {title: "Web Engineer", description: "Develop websites and maintain existing applications", id: 3},
-        {title: "Business Analyst", description: "Develop websites and maintain existing applications", id: 4},
-      ]
+      jobs: []
     }
-  }
-
+  },
+  mounted() {
+    fetch('http://localhost:3000/jobs')
+    .then(res => res.json())
+    .then(data => this.jobs = data)
+    .catch(err => console.log(err.message))
+  },
 }
 </script>
 
